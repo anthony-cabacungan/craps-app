@@ -17,7 +17,7 @@ function CrapsTable() {
         <BettingArea id="ten-place" left='815px' top='187px' width='46px' height='15px' tooltip="Place 10: Pays 9 to 5"/>
 
         <BettingArea id="pass-line" left='200px' top='460px' width='500px' height='60px'/>
-        <BettingArea id="pass-line-odds" left='200px' top='520px' width='500px' height='60px'/>
+        <BettingArea id="pass-line-odds" left='200px' top='520px' width='500px' height='50px'/>
 
       </div>
     </div>
