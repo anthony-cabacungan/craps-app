@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
 
-function BettingArea({ id, left, top, width, height, bet_info, increment_bet, decrement_bet }) {
+function BettingArea({ id, left, top, width, height, bet_info, increment, setTotalBet }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [totalAreaBet, setTotalAreaBet] = useState(0);
+
+  const handleBet = (betAmount) => {
+    if (totalAreaBet + betAmount >= 0) {
+      setTotalAreaBet((prevTotalAreaBet) => prevTotalAreaBet + betAmount );
+      setTotalBet((prevTotalBet) => prevTotalBet + betAmount);
+      console.log(totalAreaBet);
+    };
+  }
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -12,12 +21,12 @@ function BettingArea({ id, left, top, width, height, bet_info, increment_bet, de
   };
   
   const handleLeftClick = () => {
-    increment_bet();
+    handleBet(increment);
   }
 
   const handleRightClick = (event) => {
     event.preventDefault();
-    decrement_bet();
+    handleBet(-increment);
   }
 
 
