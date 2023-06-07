@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './TooltipArea.css';
 
 function BettingArea({ id, left, top, width, height, bet_info, increment, setTotalBet }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -31,16 +32,17 @@ function BettingArea({ id, left, top, width, height, bet_info, increment, setTot
 
 
   return (
-    <div
-      className="betting-area"
-      id={id}
-      style={{ left, top, width, height }}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onClick={handleLeftClick}
-      onContextMenu={handleRightClick}
-    >
-      {isHovered && <div className="bet-tooltip">{bet_info}</div>}
+    <div>
+      <div
+        className="betting-area"
+        id={id}
+        style={{ left, top, width, height }}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        onClick={handleLeftClick}
+        onContextMenu={handleRightClick}
+      ></div>
+      {isHovered && <div className="bet-tooltip" > {bet_info} </div> }
     </div>
   );
 }
