@@ -6,14 +6,19 @@
     position: relative;
     display: inline-block;
   }
+
+  .total-area-bet {
+    position: absolute;
+    opacity: 100%;
+  }
     
-  .betting-area {
+  /* .betting-area {
     position: absolute;
     background-color: yellow;
     opacity: 0.5;
-  }
-  
-  /* .betting-area {
+  } */
+   
+  .betting-area {
     position: absolute;
     left: 0;
     top: 0;
@@ -25,4 +30,4 @@
   .betting-area:hover {
     background-color: yellow;
     opacity: 0.5;
-  } */
+  }

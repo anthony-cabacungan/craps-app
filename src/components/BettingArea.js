@@ -33,6 +33,8 @@ function BettingArea({ id, left, top, width, height, bet_info, increment, setTot
 
   return (
     <div>
+      <div className="total-area-bet" style={{ left, top, width, height }}> {totalAreaBet} </div>
+
       <div
         className="betting-area"
         id={id}
@@ -42,6 +44,7 @@ function BettingArea({ id, left, top, width, height, bet_info, increment, setTot
         onClick={handleLeftClick}
         onContextMenu={handleRightClick}
       ></div>
+      
       {isHovered && <div className="bet-tooltip" > {bet_info} </div> }
     </div>
   );
