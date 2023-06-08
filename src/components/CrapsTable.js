@@ -5,6 +5,13 @@ import table from '../images/crapstable.png';
 
 function CrapsTable() {
   const [totalBet, setTotalBet] = useState(0);
+  const [dice_1, setDice_1] = useState(1);
+  const [dice_2, setDice_2] = useState(1);
+
+  const rollTheDice = () => {
+    setDice_1(Math.floor(Math.random() * 6) + 1);
+    setDice_2(Math.floor(Math.random() * 6) + 1);
+  }
 
   return (
     <div className="craps-table-container">
@@ -66,7 +73,8 @@ function CrapsTable() {
 
         <BettingArea id="pass-line" left='200px' top='460px' width='500px' height='60px'/>
         <BettingArea id="pass-line-odds" left='200px' top='520px' width='500px' height='50px'/>
-
+        <button onClick={rollTheDice}>roll</button>
+        You rolled: {dice_1} + {dice_2} = {dice_1 + dice_2}
       </div>
       <div>
         Total Bet = {totalBet}
