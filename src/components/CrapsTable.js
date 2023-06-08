@@ -9,8 +9,7 @@ function CrapsTable() {
   return (
     <div className="craps-table-container">
       <div className="image-container">
-        <img src={table} alt="Craps Table" />
-        <BettingArea id="four-place" 
+        <img src={table} alt="Craps Table" />        <BettingArea id="four-place" 
                      left='315px' 
                      top='187px' 
                      width='46px' 
@@ -70,7 +69,7 @@ function CrapsTable() {
 
       </div>
       <div>
-        Total Bet = {totalBet};
+        Total Bet = {totalBet}
       </div>
     </div>
   );
