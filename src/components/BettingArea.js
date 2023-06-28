@@ -1,17 +1,10 @@
 import React, { useState } from 'react';
 import './TooltipArea.css';
 
-function BettingArea({ id, left, top, width, height, bet_info, increment, setTotalBet }) {
+function BettingArea({ id, left, top, width, height, bet_info, increment, handleBet, totalAreaBet }) {
   const [isHovered, setIsHovered] = useState(false);
-  const [totalAreaBet, setTotalAreaBet] = useState(0);
 
-  const handleBet = (betAmount) => {
-    if (totalAreaBet + betAmount >= 0) {
-      setTotalAreaBet((prevTotalAreaBet) => prevTotalAreaBet + betAmount );
-      setTotalBet((prevTotalBet) => prevTotalBet + betAmount);
-      console.log(totalAreaBet);
-    };
-  }
+  
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -22,12 +15,12 @@ function BettingArea({ id, left, top, width, height, bet_info, increment, setTot
   };
   
   const handleLeftClick = () => {
-    handleBet(increment);
+    handleBet(id, increment);
   }
 
   const handleRightClick = (event) => {
     event.preventDefault();
-    handleBet(-increment);
+    handleBet(id, -increment);
   }
 
 
