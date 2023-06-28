@@ -26,7 +26,7 @@ function BettingArea({ id, left, top, width, height, bet_info, increment, handle
 
   return (
     <div>
-      <div className="total-area-bet" style={{ left, top, width, height }}> {totalAreaBet} </div>
+      <div className="total-area-bet" style={{ left, top, width, height }}> {totalAreaBet[id]} </div>
 
       <div
         className="betting-area"

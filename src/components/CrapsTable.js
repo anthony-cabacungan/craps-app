@@ -6,6 +6,8 @@ import table from '../images/crapstable.png';
 function CrapsTable() {
   const [totalBet, setTotalBet] = useState(0);
   const [bets, setAllBets] = useState({
+    pass_line: 0,
+    pass_line_odds: 0,
     four_place: 0,
     five_place: 0,
     six_place: 0,
@@ -40,9 +42,10 @@ function CrapsTable() {
                      height='15px' 
                      bet_info="Place 4: Pays 9 to 5"
                      increment={5}
-                     totalAreaBet={bets.four_place}
+                     totalAreaBet={bets}
                      handleBet={handleBet}
         />
+    
         <BettingArea id="five_place" 
                      left='415px' 
                      top='187px' 
@@ -50,7 +53,8 @@ function CrapsTable() {
                      height='15px' 
                      bet_info="Place 5: Pays 7 to 5"
                      increment={5}
-                     setTotalBet={setTotalBet}
+                     totalAreaBet={bets}
+                     handleBet={handleBet}
         />
         <BettingArea id="six_place" 
                      left='515px' 
@@ -59,7 +63,8 @@ function CrapsTable() {
                      height='15px' 
                      bet_info="Place 6: Pays 7 to 6"
                      increment={6}
-                     setTotalBet={setTotalBet}
+                     totalAreaBet={bets}
+                     handleBet={handleBet}
         />
         <BettingArea id="eight_place" 
                      left='615px' 
@@ -68,7 +73,8 @@ function CrapsTable() {
                      height='15px' 
                      bet_info="Place 8: Pays 7 to 6"
                      increment={6}
-                     setTotalBet={setTotalBet}
+                     totalAreaBet={bets}
+                     handleBet={handleBet}
         />
         <BettingArea id="nine_place" 
                      left='715px' 
@@ -77,7 +83,8 @@ function CrapsTable() {
                      height='15px' 
                      bet_info="Place 9: Pays 7 to 5"
                      increment={5}
-                     setTotalBet={setTotalBet}
+                     totalAreaBet={bets}
+                     handleBet={handleBet}
         />
         <BettingArea id="ten_place" 
                      left='815px' 
@@ -86,11 +93,32 @@ function CrapsTable() {
                      height='15px' 
                      bet_info="Place 10: Pays 9 to 5"
                      increment={5}
-                     setTotalBet={setTotalBet}
+                     totalAreaBet={bets}
+                     handleBet={handleBet}
         />
 
-        <BettingArea id="pass_line" left='200px' top='460px' width='500px' height='60px'/>
-        <BettingArea id="pass_line_odds" left='200px' top='520px' width='500px' height='50px'/>
+        <BettingArea id="pass_line" 
+                     left='200px' 
+                     top='460px' 
+                     width='500px' 
+                     height='60px'
+                     bet_info="Pass Line: Pays 1 to 1"
+                     increment={5}
+                     totalAreaBet={bets}
+                     handleBet={handleBet}
+        />
+
+        {/* <BettingArea id="pass_line_odds" 
+                     left='200px' 
+                     top='520px' 
+                     width='500px' 
+                     height='50px'
+                     bet_info="Pass Line Odds: Pays 1 to 1"
+                     increment={5}
+                     totalAreaBet={bets}
+                     handleBet={handleBet}
+        /> */}
+
         <button onClick={rollTheDice}>roll</button>
         You rolled: {dice_1} + {dice_2} = {dice_1 + dice_2}
       </div>
