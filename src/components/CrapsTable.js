@@ -24,6 +24,13 @@ function CrapsTable() {
   const rollTheDice = () => {
     setDice_1(Math.floor(Math.random() * 6) + 1);
     setDice_2(Math.floor(Math.random() * 6) + 1);
+
+    handlePlaceOutcome("four_place", 9/5, [4], [7]);
+    handlePlaceOutcome("five_place", 7/5, [5], [7]);
+    handlePlaceOutcome("six_place", 7/6, [6], [7]);
+    handlePlaceOutcome("eight_place", 7/6, [8], [7]);
+    handlePlaceOutcome("nine_place", 7/5, [9], [7]);
+    handlePlaceOutcome("ten_place", 9/5, [10], [7]);
   };
 
   const handleBet = (id, betAmount) => {
@@ -35,12 +42,19 @@ function CrapsTable() {
     };
   };
   
-  const handlePlaceWin = (id, win_ratio) => {
+  const handlePlaceOutcome = (id, win_ratio, win_condition, lose_condition) => {
     if (bets[id] > 0) {
-      let win_amount = win_ratio * bets[id];
-      setPlayerBalance((prevPlayerBalance) => (prevPlayerBalance + win_amount));
-      setTotalWin((prevTotalWin) => (prevTotalWin + win_amount));
-      console.log(totalBet);
+      const dice_sum = dice_1 + dice_2;
+      
+      if (win_condition.includes(dice_sum)) {
+        const win_amount = win_ratio * bets[id];
+        setPlayerBalance((prevPlayerBalance) => (prevPlayerBalance + win_amount));
+        setTotalWin((prevTotalWin) => (prevTotalWin + win_amount));
+        console.log(totalBet);
+      };
+      if (lose_condition.includes(dice_sum)) {
+        setAllBets((prevBets) => ({ ...prevBets, [id]: 0 }));
+      }
     };
   };
 
@@ -58,14 +72,9 @@ function CrapsTable() {
                      width='46px' 
                      height='15px' 
                      bet_info="Place 4: Pays 9 to 5"
-                     win_ratio={9/5}
                      increment={5}
                      totalAreaBet={bets}
                      handleBet={handleBet}
-                     handleWin={handlePlaceWin}
-                     handleLose={handleLose}
-                     win_condition={[4]}
-                     lose_condition={[7]}
         />
     
         <BettingArea id="five_place" 
@@ -74,14 +83,9 @@ function CrapsTable() {
                      width='46px' 
                      height='15px' 
                      bet_info="Place 5: Pays 7 to 5"
-                     win_ratio={7/5}
                      increment={5}
                      totalAreaBet={bets}
                      handleBet={handleBet}
-                     handleWin={handlePlaceWin}
-                     handleLose={handleLose}
-                     win_condition={[5]}
-                     lose_condition={[7]}
         />
         <BettingArea id="six_place" 
                      left='515px' 
@@ -89,14 +93,9 @@ function CrapsTable() {
                      width='46px' 
                      height='15px' 
                      bet_info="Place 6: Pays 7 to 6"
-                     win_ratio={7/6}
                      increment={6}
                      totalAreaBet={bets}
                      handleBet={handleBet}
-                     handleWin={handlePlaceWin}
-                     handleLose={handleLose}
-                     win_condition={[6]}
-                     lose_condition={[7]}
         />
         <BettingArea id="eight_place" 
                      left='615px' 
@@ -104,14 +103,9 @@ function CrapsTable() {
                      width='46px' 
                      height='15px' 
                      bet_info="Place 8: Pays 7 to 6"
-                     win_ratio={7/6}
                      increment={6}
                      totalAreaBet={bets}
                      handleBet={handleBet}
-                     handleWin={handlePlaceWin}
-                     handleLose={handleLose}
-                     win_condition={[8]}
-                     lose_condition={[7]}
         />
         <BettingArea id="nine_place" 
                      left='715px' 
@@ -119,13 +113,9 @@ function CrapsTable() {
                      width='46px' 
                      height='15px' 
                      bet_info="Place 9: Pays 7 to 5"
-                     win_ratio={7/5}
                      increment={5}
                      totalAreaBet={bets}
                      handleBet={handleBet}
-                     handleWin={handlePlaceWin}
-                     handleLose={handleLose}
-                     win_condition={[9]}
                      lose_condition={[7]}
         />
         <BettingArea id="ten_place" 
@@ -134,14 +124,9 @@ function CrapsTable() {
                      width='46px' 
                      height='15px' 
                      bet_info="Place 10: Pays 9 to 5"
-                     win_ratio={9/5}
                      increment={5}
                      totalAreaBet={bets}
                      handleBet={handleBet}
-                     handleWin={handlePlaceWin}
-                     handleLose={handleLose}
-                     win_condition={[10]}
-                     lose_condition={[7]}
         />
 
         <BettingArea id="pass_line" 
@@ -150,14 +135,9 @@ function CrapsTable() {
                      width='500px' 
                      height='60px'
                      bet_info="Pass Line: Pays 1 to 1"
-                     win_ratio={1/1}
                      increment={5}
                      totalAreaBet={bets}
                      handleBet={handleBet}
-                     handleWin={handlePlaceWin}
-                     handleLose={handleLose}
-                     win_condition={[7, 11]}
-                     lose_condition={[2, 3, 12]}
         />
 
         {/* <BettingArea id="pass_line_odds" 
