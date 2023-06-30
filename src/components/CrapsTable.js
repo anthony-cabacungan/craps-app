@@ -29,6 +29,7 @@ function CrapsTable() {
   const handleBet = (id, betAmount) => {
     if (bets[id] + betAmount >= 0) {
       setTotalBet((prevTotalBet) => prevTotalBet + betAmount );
+      setPlayerBalance((prevPlayerBalance) => (prevPlayerBalance - betAmount));
       setAllBets((prevBets) => ({...prevBets, [id]: prevBets[id] + betAmount}));
       console.log(totalBet);
     };
@@ -175,6 +176,9 @@ function CrapsTable() {
       </div>
       <div>
         Total Bet = {totalBet}
+      </div>
+      <div>
+        Player Balance = {playerBalance}
       </div>
     </div>
   );
